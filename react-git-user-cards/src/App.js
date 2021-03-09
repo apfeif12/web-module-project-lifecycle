@@ -51,11 +51,14 @@ class App extends React.Component {
             .catch((err) => {
                 console.log(err);
             });
+
+
     };
 
+    flowChart = (user) => {
+      return <img src={`http://ghchart.rshah.org/${user}`} alt={`http://ghchart.rshah.org/${user}`} />
+    }
     render() {
-        const chart = require("http://ghchart.rshah.org/" +
-            this.userData.login);
         return (
             <div>
                 <FormDiv>
@@ -74,7 +77,10 @@ class App extends React.Component {
                             src={this.state.userData.avatar_url}
                             width="200"
                         />
-                        <img src={chart} alt="alex chart" />
+                        {
+                          this.flowChart(this.state.userData.login)
+                        }
+                        
                         <h3>Name: {this.state.userData.name}</h3>
                         <h3>Company: {this.state.userData.company}</h3>
                         <h3>Location: {this.state.userData.location}</h3>
